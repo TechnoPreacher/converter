@@ -5,11 +5,13 @@
 				<div class="input-group-prepend">
 					<select class="custom-select" id="mySelect<?=$i?>" name="mySelect">
 						<?php $j = 0; ?>
-						@foreach($data as $k=>$v)
+						@isset($convert)
+						@foreach($convert as $k=>$v)
 							<?php $j++; ?>
 							<option value="option<?=$j?>" data-buy="<?=$v['buy']?>"
 							        data-sale="<?=$v['sale']?>"><?=$k?></option>
 						@endforeach
+							@endisset
 					</select>
 				</div>
 				<input type="text" class="form-control" value="1" name="inp<?=$i?>" id="inp<?=$i?>">

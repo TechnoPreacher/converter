@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('set2s', function (Blueprint $table) {
+        Schema::create('titlesets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-			$table->string('Name')->unique();
+	        $table->text('title');
         });
+
+
+
     }
 
     /**
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('set2s');
+        Schema::dropIfExists('titlesets');
     }
 };

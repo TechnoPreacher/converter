@@ -2,14 +2,13 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Models\Mainpageset;
 	use App\Models\Menuset;
 	use App\Models\Titleset;
-	use Illuminate\Database\Eloquent\Collection;
-	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\DB;
 
-	class MenusetController extends Controller
+	class MainpagesetController extends Controller
 	{
 		/**
 		 * Display a listing of the resource.
@@ -18,8 +17,8 @@
 		 */
 		public function index()
 		{
-
-			return view('menuset', ['data' => Menuset::all(),'title' => Titleset::all()]);
+			return view('mainpageset',
+				['mainpageset' => Mainpageset::all(), 'title' => Titleset::all(), 'data' => Menuset::all()]);
 		}
 
 		/**
@@ -29,7 +28,7 @@
 		 */
 		public function create()
 		{
-
+			//
 		}
 
 		/**
@@ -39,68 +38,65 @@
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function store(Request $request): RedirectResponse
+		public function store(Request $request)
 		{
 			if ($request->isMethod('post')) {
 				$data = $request->post();
 			}
 			array_shift($data);//remove first element with token info
-			$titles = $data['row']['title'];
-			$links  = $data['row']['link'];
-			$data   = array_combine($titles, $links);
-			DB::table('menusets')->truncate();//remove all data from table in DB
-			foreach ($data as $k => $v) {
-				Menuset::create(['title' => $k, 'link' => $v]); //create new row in table
-			}
+			$content = $data['content'];
+			$link    = $data['link'];
+			DB::table('mainpagesets')->truncate();//remove all data from table in DB
+			Mainpageset::create(['content' => $content, 'link' => $link]); //create new row in table
 			return redirect('dashboard'); //go to dashboard
 		}
 
 		/**
 		 * Display the specified resource.
 		 *
-		 * @param  \App\Models\Menuset  $menuset
+		 * @param  \App\Models\Mainpageset  $mainpageset
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function show(Menuset $menuset)
+		public function show(Mainpageset $mainpageset)
 		{
-
+			//
 		}
 
 		/**
 		 * Show the form for editing the specified resource.
 		 *
-		 * @param  \App\Models\Menuset  $menuset
+		 * @param  \App\Models\Mainpageset  $mainpageset
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function edit(Menuset $menuset)
+		public function edit(Mainpageset $mainpageset)
 		{
-
+			//
 		}
 
 		/**
 		 * Update the specified resource in storage.
 		 *
 		 * @param  \Illuminate\Http\Request  $request
-		 * @param  \App\Models\Menuset  $menuset
+		 * @param  \App\Models\Mainpageset  $mainpageset
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function update(Request $request, Menuset $menuset)
+		public function update(Request $request, Mainpageset $mainpageset)
 		{
-
+			//
 		}
 
 		/**
 		 * Remove the specified resource from storage.
 		 *
-		 * @param  \App\Models\Menuset  $menuset
+		 * @param  \App\Models\Mainpageset  $mainpageset
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function destroy(Menuset $menuset)
+		public function destroy(Mainpageset $mainpageset)
 		{
-
+			//
 		}
 	}

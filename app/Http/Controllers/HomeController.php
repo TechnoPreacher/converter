@@ -3,6 +3,7 @@
 	namespace App\Http\Controllers;
 
 	use App\Models\Menuset;
+	use App\Models\Titleset;
 	use Illuminate\Http\Request;
 
 	class HomeController extends Controller
@@ -24,6 +25,6 @@
 		 */
 		public function index()
 		{
-			return view('home', ['data' => Menuset::all()]);
+			return view('dashboard', ['data' => Menuset::all(),'title'=>Titleset::all()]);
 		}
 	}

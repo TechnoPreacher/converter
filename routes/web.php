@@ -13,13 +13,11 @@
 	|
 	*/
 
-
+	Auth::routes();
 
 	Route::get('/', [\App\Http\Controllers\ApiController::class, 'index']);
+	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);//->name('home');
 
-
-
-	Auth::routes();
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::resource('titlesets', \App\Http\Controllers\TitlesetController::class);
 	Route::resource('menusets', \App\Http\Controllers\MenusetController::class);
-
+	Route::resource('mainpagesets', \App\Http\Controllers\MainpagesetController::class);
