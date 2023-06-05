@@ -18,12 +18,12 @@
 					<div class="card-body">
 						<form action="" method="post">
 							@csrf
-							@if (isset($titleset))
-								@foreach( $titleset as $menu)
+							@if (isset($title))
+								@foreach( $title as $d)
 									<div class="input-group mb-3">
 										<span class="input-group-text">Tiltle:</span>
 										<input type="text" name="title" class="form-control"
-										       value="<?=$menu->title?>">
+										       value="<?=$d->title?>">
 									</div>
 								@endforeach
 							@endif

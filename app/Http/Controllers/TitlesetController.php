@@ -17,7 +17,7 @@ class TitlesetController extends Controller
      */
     public function index()
     {
-	    return view('titleset', ['titleset' => Titleset::all(),'data'=>Menuset::all()]);
+	    return view('titleset', ['title' => Titleset::all(),'data'=>Menuset::all()]);
     }
 
     /**
